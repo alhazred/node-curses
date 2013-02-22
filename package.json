@@ -2,13 +2,9 @@
   "name": "curses",
   "version": "0.0.10",
   "description": "Bindings for the native curses library, a full featured console IO library.",
-  "main": "./curses",
-  "dependencies": {
-    "tar": ">=0.1.13"
-  },
+  "main": "./build/Release/curses",
   "scripts": {
-    "install": "node ./pre-build.js",
-    "postinstall": "node-gyp rebuild --release",
+    "install": "node-waf configure build",
     "test": "node ./test/test.js"
   },
   "keywords": [

@@ -1,5 +1,5 @@
 /* load curses */
-var curses = require('../curses')
+var curses = require('curses')
 
 /* initialize top level window */
 ,   stdwin = curses.initscr()
