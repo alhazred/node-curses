@@ -238,6 +238,15 @@ Handle<Value> node_keyname(const Arguments& args) {
 	return scope.Close(String::New( result ));
 }
 
+Handle<Value> node_curs(const Arguments& args) {
+	HandleScope scope;
+	NODE_ARGS(1)
+	NODE_ARG(0, Number)
+	int32_t k		= CAST_INT32(args[0]->Int32Value());
+	int32_t result	= curs_set( k );
+	return scope.Close(Int32::New( result ));
+}
+
 Handle<Value> node_keypad(const Arguments& args) {
 	HandleScope scope;
 	NODE_ARGS(2)
@@ -976,6 +985,11 @@ void init(Handle<Object> target) {
 	target->Set(
 		String::NewSymbol("keyname"),
 		FunctionTemplate::New(node_keyname)->GetFunction()
+	);
+
+	target->Set(
+		String::NewSymbol("curs_set"),
+		FunctionTemplate::New(node_curs)->GetFunction()
 	);
 
 	target->Set(
